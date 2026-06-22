@@ -1,0 +1,2 @@
+"""Wildfire pipeline package."""
+

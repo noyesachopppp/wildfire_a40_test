@@ -1,0 +1,31 @@
+prompts:
+  - smoke
+  - flame
+  - fire
+  - smoke plume
+
+sampling:
+  frame_stride: 10
+
+thresholds:
+  detection_confidence: 0.35
+  high_risk_confidence: 0.65
+  min_mask_area_ratio: 0.005
+  high_growth_ratio: 0.20
+
+visualization:
+  box_thickness: 2
+  mask_alpha: 0.35
+
+models:
+  device: null # null -> auto select (cuda if available else cpu)
+  grounding_dino:
+    config: "TODO: set GroundingDINO python config path"
+    checkpoint: "TODO: set GroundingDINO checkpoint (.pth) path"
+    box_threshold: 0.35
+    text_threshold: 0.25
+  sam2:
+    model_config: "TODO: set SAM2 model config (.yaml) path"
+    checkpoint: "TODO: set SAM2 checkpoint (.pt) path"
+  vlm:
+    provider: "placeholder"
