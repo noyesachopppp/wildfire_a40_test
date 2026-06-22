@@ -43,6 +43,15 @@ class PipelineConfig:
     sam2_checkpoint: str | None = None
     sam2_model_config: str | None = None
     model_device: str | None = None
+    vlm_enabled: bool = True
+    vlm_backend: str = "placeholder"
+    vlm_model_name_or_path: str | None = None
+    vlm_device: str | None = None
+    vlm_torch_dtype: str = "float16"
+    vlm_load_in_4bit: bool = False
+    vlm_max_new_tokens: int = 64
+    vlm_only_on_risk_levels: list[str] | None = None
+    vlm_selected_frame_interval: int = 1
 
 
 class WildfirePipeline:
@@ -63,7 +72,18 @@ class WildfirePipeline:
             model_config=cfg.sam2_model_config,
             device=cfg.model_device,
         )
-        self.vlm = VLMExplainer(mode="placeholder")
+        self.vlm = VLMExplainer(
+            mode=cfg.vlm_backend,
+            enabled=cfg.vlm_enabled,
+            backend=cfg.vlm_backend,
+            model_name_or_path=cfg.vlm_model_name_or_path,
+            device=cfg.vlm_device or cfg.model_device,
+            torch_dtype=cfg.vlm_torch_dtype,
+            load_in_4bit=cfg.vlm_load_in_4bit,
+            max_new_tokens=cfg.vlm_max_new_tokens,
+            only_on_risk_levels=cfg.vlm_only_on_risk_levels,
+            selected_frame_interval=cfg.vlm_selected_frame_interval,
+        )
         self.risk_engine = RuleBasedRiskEngine(
             detection_confidence=cfg.detection_confidence,
             high_risk_confidence=cfg.high_risk_confidence,
@@ -254,13 +274,24 @@ class WildfirePipeline:
 
                 # Stage: vlm_explanation
                 t0 = time.perf_counter()
-                explanation = self.vlm.explain(
-                    detections=detections,
-                    mask_area_ratio=area_ratio,
-                    mask_growth=growth,
-                    consecutive_frames=consecutive_detected,
-                    risk_level=risk_level,
-                )
+                if self.vlm.should_explain(risk_level=risk_level, frame_id=packet.frame_id):
+                    vlm_used = True
+                    explanation = self.vlm.explain(
+                        detections=detections,
+                        mask_area_ratio=area_ratio,
+                        mask_growth=growth,
+                        consecutive_frames=consecutive_detected,
+                        risk_level=risk_level,
+                    )
+                else:
+                    vlm_used = False
+                    explanation = self.vlm.fallback_explanation(
+                        detections=detections,
+                        mask_area_ratio=area_ratio,
+                        mask_growth=growth,
+                        consecutive_frames=consecutive_detected,
+                        risk_level=risk_level,
+                    )
                 t1 = time.perf_counter()
                 vlm_explanation_ms = self._ms(t0, t1)
 
@@ -291,6 +322,8 @@ class WildfirePipeline:
                         "mask_area_ratio": round(area_ratio, 6),
                         "mask_growth": round(growth, 6),
                         "risk_level": risk_level,
+                        "vlm_used": vlm_used,
+                        "vlm_model": self.cfg.vlm_model_name_or_path or self.cfg.vlm_backend,
                         "explanation": explanation,
                         "alert_message": alert_message,
                     }

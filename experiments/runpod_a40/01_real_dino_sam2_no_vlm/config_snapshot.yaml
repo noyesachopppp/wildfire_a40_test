@@ -1,0 +1,29 @@
+prompts:
+- smoke
+- flame
+- fire
+- smoke plume
+sampling:
+  frame_stride: 10
+thresholds:
+  detection_confidence: 0.35
+  high_risk_confidence: 0.65
+  min_mask_area_ratio: 0.005
+  high_growth_ratio: 0.2
+visualization:
+  box_thickness: 2
+  mask_alpha: 0.35
+models:
+  device: cuda
+  grounding_dino:
+    config: checkpoints/groundingdino/GroundingDINO_SwinT_OGC.py
+    checkpoint: checkpoints/groundingdino/groundingdino_swint_ogc.pth
+    box_threshold: 0.35
+    text_threshold: 0.25
+  sam2:
+    model_config: configs/sam2.1/sam2.1_hiera_l.yaml
+    checkpoint: checkpoints/sam2/sam2.1_hiera_large.pt
+  vlm:
+    provider: placeholder
+vlm:
+  enabled: false

@@ -40,6 +40,17 @@ def build_pipeline_config(cfg: dict, frame_stride_override: int | None = None) -
         sam2_checkpoint=cfg.get("models", {}).get("sam2", {}).get("checkpoint"),
         sam2_model_config=cfg.get("models", {}).get("sam2", {}).get("model_config"),
         model_device=cfg.get("models", {}).get("device"),
+        vlm_enabled=bool(cfg.get("models", {}).get("vlm", {}).get("enabled", True)),
+        vlm_backend=str(cfg.get("models", {}).get("vlm", {}).get("backend", "placeholder")),
+        vlm_model_name_or_path=cfg.get("models", {}).get("vlm", {}).get("model_name_or_path"),
+        vlm_device=cfg.get("models", {}).get("vlm", {}).get("device"),
+        vlm_torch_dtype=str(cfg.get("models", {}).get("vlm", {}).get("torch_dtype", "float16")),
+        vlm_load_in_4bit=bool(cfg.get("models", {}).get("vlm", {}).get("load_in_4bit", False)),
+        vlm_max_new_tokens=int(cfg.get("models", {}).get("vlm", {}).get("max_new_tokens", 64)),
+        vlm_only_on_risk_levels=cfg.get("models", {}).get("vlm", {}).get("only_on_risk_levels"),
+        vlm_selected_frame_interval=int(
+            cfg.get("models", {}).get("vlm", {}).get("selected_frame_interval", 1)
+        ),
     )
 
 

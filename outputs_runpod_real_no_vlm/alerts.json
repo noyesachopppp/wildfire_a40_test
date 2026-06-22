@@ -1,0 +1,184 @@
+[
+  {
+    "frame_id": 0,
+    "timestamp": 0.0,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.4344,
+    "mask_area_ratio": 0.404221,
+    "mask_growth": 0.0,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.43, mask area is 40.42% of frame, and temporal growth is +0% across recent frames. The signal is currently weak or short-lived. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 1, regions: 906, mask area: 40.42%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 30,
+    "timestamp": 1.251,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.4328,
+    "mask_area_ratio": 0.025364,
+    "mask_growth": -0.937253,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.43, mask area is 2.54% of frame, and temporal growth is -93% across recent frames. The signal persists for 2 consecutive frames. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 2, regions: 65, mask area: 2.54%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 60,
+    "timestamp": 2.502,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.4196,
+    "mask_area_ratio": 0.391869,
+    "mask_growth": 14.449973,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.42, mask area is 39.19% of frame, and temporal growth is +1444% across recent frames. The signal has persisted for 3 consecutive frames and appears to be expanding. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 3, regions: 1201, mask area: 39.19%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 90,
+    "timestamp": 3.754,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.3909,
+    "mask_area_ratio": 0.379067,
+    "mask_growth": -0.032668,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.39, mask area is 37.91% of frame, and temporal growth is -3% across recent frames. The signal persists for 4 consecutive frames. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 4, regions: 1220, mask area: 37.91%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 120,
+    "timestamp": 5.005,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.4172,
+    "mask_area_ratio": 0.018605,
+    "mask_growth": -0.950919,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.42, mask area is 1.86% of frame, and temporal growth is -95% across recent frames. The signal persists for 5 consecutive frames. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 5, regions: 24, mask area: 1.86%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 150,
+    "timestamp": 6.256,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.4099,
+    "mask_area_ratio": 0.017863,
+    "mask_growth": -0.039892,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.41, mask area is 1.79% of frame, and temporal growth is -3% across recent frames. The signal persists for 6 consecutive frames. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 6, regions: 16, mask area: 1.79%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 180,
+    "timestamp": 7.507,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.3961,
+    "mask_area_ratio": 0.325353,
+    "mask_growth": 17.213928,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.40, mask area is 32.54% of frame, and temporal growth is +1721% across recent frames. The signal has persisted for 7 consecutive frames and appears to be expanding. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 7, regions: 932, mask area: 32.54%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 210,
+    "timestamp": 8.759,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.4062,
+    "mask_area_ratio": 0.01643,
+    "mask_growth": -0.949502,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.41, mask area is 1.64% of frame, and temporal growth is -94% across recent frames. The signal persists for 8 consecutive frames. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 8, regions: 31, mask area: 1.64%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 240,
+    "timestamp": 10.01,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.3904,
+    "mask_area_ratio": 0.339769,
+    "mask_growth": 19.680073,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.39, mask area is 33.98% of frame, and temporal growth is +1968% across recent frames. The signal has persisted for 9 consecutive frames and appears to be expanding. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 9, regions: 920, mask area: 33.98%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 270,
+    "timestamp": 11.261,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.4237,
+    "mask_area_ratio": 0.301263,
+    "mask_growth": -0.11333,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.42, mask area is 30.13% of frame, and temporal growth is -11% across recent frames. The signal persists for 10 consecutive frames. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 10, regions: 969, mask area: 30.13%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 300,
+    "timestamp": 12.512,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.4001,
+    "mask_area_ratio": 0.015161,
+    "mask_growth": -0.949676,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.40, mask area is 1.52% of frame, and temporal growth is -94% across recent frames. The signal persists for 11 consecutive frames. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 11, regions: 26, mask area: 1.52%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 330,
+    "timestamp": 13.764,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.4035,
+    "mask_area_ratio": 0.015168,
+    "mask_growth": 0.000493,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.40, mask area is 1.52% of frame, and temporal growth is +0% across recent frames. The signal has persisted for 12 consecutive frames and appears to be expanding. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 12, regions: 22, mask area: 1.52%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 360,
+    "timestamp": 15.015,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.4172,
+    "mask_area_ratio": 0.014446,
+    "mask_growth": -0.047619,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.42, mask area is 1.44% of frame, and temporal growth is -4% across recent frames. The signal persists for 13 consecutive frames. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 13, regions: 17, mask area: 1.44%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  },
+  {
+    "frame_id": 390,
+    "timestamp": 16.266,
+    "detected_labels": [
+      "smoke"
+    ],
+    "confidence": 0.4038,
+    "mask_area_ratio": 0.014319,
+    "mask_growth": -0.00878,
+    "risk_level": "MEDIUM",
+    "explanation": "smoke-like region detected. Average confidence is 0.40, mask area is 1.43% of frame, and temporal growth is +0% across recent frames. The signal persists for 14 consecutive frames. Current risk estimate: MEDIUM.",
+    "alert_message": "Possible wildfire indicator detected. Consecutive frames: 14, regions: 21, mask area: 1.43%. Risk level: MEDIUM. Continue monitoring and prepare manual confirmation."
+  }
+]

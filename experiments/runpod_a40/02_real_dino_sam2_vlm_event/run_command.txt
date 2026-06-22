@@ -1,0 +1,1 @@
+HF_HUB_ENABLE_HF_TRANSFER=0 PYTHONPATH=/workspace/wildfire_a40_test python -m src.main --input wildfire_24fps.mp4 --output outputs_runpod_real_vlm_event --config config_vlm_event.yaml --profile --frame-stride 30

@@ -1,0 +1,1 @@
+PYTHONPATH=/workspace/wildfire_a40_test python -m src.main --input wildfire_24fps.mp4 --output outputs_runpod_real_no_vlm --config config.yaml --profile --frame-stride 30

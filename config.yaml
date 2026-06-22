@@ -28,4 +28,14 @@ models:
     model_config: "TODO: set SAM2 model config (.yaml) path"
     checkpoint: "TODO: set SAM2 checkpoint (.pt) path"
   vlm:
-    provider: "placeholder"
+    enabled: true
+    backend: "placeholder" # "placeholder" or "huggingface"
+    model_name_or_path: "Qwen/Qwen2-VL-2B-Instruct"
+    device: "cuda"
+    torch_dtype: "float16"
+    load_in_4bit: false
+    max_new_tokens: 64
+    only_on_risk_levels:
+      - "MEDIUM"
+      - "HIGH"
+    selected_frame_interval: 3
