@@ -1,0 +1,31 @@
+{
+  "environment_name": "split_service_mock",
+  "run_type": "split_service_mock",
+  "detector_model": "YOLOv8n",
+  "detector_backend": "mock",
+  "processed_frames": 14,
+  "total_runtime_ms": 5109.1547,
+  "avg_latency_per_frame_ms": 341.3589,
+  "average_fps": 2.7402,
+  "frame_load_avg_ms": 329.0786,
+  "preprocess_avg_ms": 4.8623,
+  "yolo_inference_avg_ms": 0.024,
+  "risk_engine_avg_ms": 0.0094,
+  "event_router_avg_ms": 0.0004,
+  "queue_wait_avg_ms": 0.0,
+  "sam2_inference_avg_ms": 0.5859,
+  "vlm_inference_avg_ms": 0.0153,
+  "output_write_avg_ms": 0.0097,
+  "end_to_end_avg_ms": 341.3589,
+  "end_to_end_p95_ms": 438.1712,
+  "event_count": 8,
+  "sam2_used_count": 8,
+  "vlm_used_count": 8,
+  "bottleneck_stage": "frame_load",
+  "worker_busy_time_ms": {
+    "sam2_worker_busy_ms": 8.202,
+    "vlm_worker_busy_ms": 0.2143
+  },
+  "queue_depth_max": 1,
+  "notes": "Mock split-service run validates queue wait, worker saturation, and stage instrumentation."
+}

@@ -99,6 +99,13 @@ class SAM2Wrapper:
 
         return self._real_segment(image_bgr, detections)
 
+    @staticmethod
+    def _extract_box(det: dict) -> list[int]:
+        raw = det.get("box", det.get("bbox"))
+        if raw is None:
+            return [0, 0, 1, 1]
+        return [int(v) for v in raw]
+
     def _real_segment(self, image_bgr: np.ndarray, detections: list[dict]) -> List[np.ndarray]:
         if self.predictor is None:
             raise RuntimeError(
@@ -112,7 +119,7 @@ class SAM2Wrapper:
         image_rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
         boxes: list[list[float]] = []
         for det in detections:
-            x1, y1, x2, y2 = [int(v) for v in det["box"]]
+            x1, y1, x2, y2 = self._extract_box(det)
             x1, y1 = max(0, x1), max(0, y1)
             x2, y2 = min(w - 1, x2), min(h - 1, y2)
             boxes.append([float(x1), float(y1), float(x2), float(y2)])
@@ -146,7 +153,7 @@ class SAM2Wrapper:
         h, w = image_bgr.shape[:2]
         masks: list[np.ndarray] = []
         for det in detections:
-            x1, y1, x2, y2 = [int(v) for v in det["box"]]
+            x1, y1, x2, y2 = self._extract_box(det)
             x1, y1 = max(0, x1), max(0, y1)
             x2, y2 = min(w - 1, x2), min(h - 1, y2)
             m = np.zeros((h, w), dtype=np.uint8)
@@ -158,7 +165,7 @@ class SAM2Wrapper:
         h, w = image_bgr.shape[:2]
         masks: list[np.ndarray] = []
         for det in detections:
-            x1, y1, x2, y2 = [int(v) for v in det["box"]]
+            x1, y1, x2, y2 = self._extract_box(det)
             x1, y1 = max(0, x1), max(0, y1)
             x2, y2 = min(w - 1, x2), min(h - 1, y2)
 
