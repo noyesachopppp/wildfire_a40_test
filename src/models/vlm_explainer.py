@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import List
 
+import numpy as np
+
 from src.utils.logging_utils import get_logger
 
 
@@ -45,6 +47,7 @@ class VLMExplainer:
 
         self._hf_model = None
         self._hf_tokenizer = None
+        self.last_fallback_used = False
 
     def should_explain(self, risk_level: str | None, frame_id: int) -> bool:
         if not self.enabled:
@@ -63,6 +66,7 @@ class VLMExplainer:
         consecutive_frames: int,
         risk_level: str | None = None,
     ) -> str:
+        self.last_fallback_used = True
         return self._placeholder_explain(
             detections=detections,
             mask_area_ratio=mask_area_ratio,
@@ -148,8 +152,11 @@ class VLMExplainer:
         mask_growth: float,
         consecutive_frames: int,
         risk_level: str | None = None,
+        frame: np.ndarray | None = None,
+        merged_mask: np.ndarray | None = None,
     ) -> str:
         if self.backend == "placeholder":
+            self.last_fallback_used = False
             return self._placeholder_explain(
                 detections=detections,
                 mask_area_ratio=mask_area_ratio,
@@ -170,13 +177,19 @@ class VLMExplainer:
                     if detections
                     else 0.0
                 )
+                bbox_preview = [d.get("bbox", d.get("box")) for d in detections[:3]]
+                mask_pixels = int(np.count_nonzero(merged_mask)) if merged_mask is not None else 0
+                frame_shape = tuple(frame.shape[:2]) if frame is not None else None
                 prompt = (
                     "You are a wildfire monitoring assistant. "
                     "Summarize this frame risk evidence in 1-2 short sentences.\n"
                     f"risk_level={risk_level}\n"
                     f"labels={labels}\n"
                     f"avg_confidence={avg_conf:.3f}\n"
+                    f"bbox_preview={bbox_preview}\n"
+                    f"frame_shape={frame_shape}\n"
                     f"mask_area_ratio={mask_area_ratio:.6f}\n"
+                    f"mask_pixels={mask_pixels}\n"
                     f"mask_growth={mask_growth:.6f}\n"
                     f"consecutive_frames={consecutive_frames}\n"
                 )
@@ -191,6 +204,7 @@ class VLMExplainer:
                 text = self._hf_tokenizer.decode(outputs[0], skip_special_tokens=True)
                 if text.startswith(prompt):
                     text = text[len(prompt) :].strip()
+                self.last_fallback_used = False
                 return text.strip() or self._placeholder_explain(
                     detections=detections,
                     mask_area_ratio=mask_area_ratio,
@@ -203,6 +217,7 @@ class VLMExplainer:
                     "VLM huggingface inference failed (%s). Falling back to placeholder explain.",
                     exc,
                 )
+                self.last_fallback_used = True
                 return self._placeholder_explain(
                     detections=detections,
                     mask_area_ratio=mask_area_ratio,
@@ -212,6 +227,7 @@ class VLMExplainer:
                 )
 
         self.logger.warning("Unknown VLM backend '%s'. Using placeholder.", self.backend)
+        self.last_fallback_used = True
         return self._placeholder_explain(
             detections=detections,
             mask_area_ratio=mask_area_ratio,

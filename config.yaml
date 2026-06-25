@@ -19,6 +19,12 @@ visualization:
 
 models:
   device: null # null -> auto select (cuda if available else cpu)
+  detector:
+    type: "yolo" # "yolo" or "groundingdino"
+  yolo:
+    model_name: "yolov8n" # "yolov8n" or "yolov8m"
+    backend: "mock" # "mock" or "ultralytics"
+    conf_threshold: 0.35
   grounding_dino:
     config: "TODO: set GroundingDINO python config path"
     checkpoint: "TODO: set GroundingDINO checkpoint (.pth) path"

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wildfire-risk-engine
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wildfire-risk-engine
+  template:
+    metadata:
+      labels:
+        app: wildfire-risk-engine
+    spec:
+      containers:
+        - name: risk-engine
+          image: wildfire-ai-alert:latest
+          command: ["python3", "-m", "http.server", "9002"]
+          ports:
+            - containerPort: 9002

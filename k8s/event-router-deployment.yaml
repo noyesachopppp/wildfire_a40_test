@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wildfire-event-router
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wildfire-event-router
+  template:
+    metadata:
+      labels:
+        app: wildfire-event-router
+    spec:
+      containers:
+        - name: event-router
+          image: wildfire-ai-alert:latest
+          command: ["python3", "-m", "http.server", "9003"]
+          ports:
+            - containerPort: 9003

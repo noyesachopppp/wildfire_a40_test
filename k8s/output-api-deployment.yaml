@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wildfire-output-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: wildfire-output-api
+  template:
+    metadata:
+      labels:
+        app: wildfire-output-api
+    spec:
+      containers:
+        - name: output-api
+          image: wildfire-ai-alert:latest
+          command: ["python3", "-m", "http.server", "9006"]
+          ports:
+            - containerPort: 9006

@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wildfire-detector
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wildfire-detector
+  template:
+    metadata:
+      labels:
+        app: wildfire-detector
+    spec:
+      containers:
+        - name: detector
+          image: wildfire-ai-alert:latest
+          command: ["python3", "-m", "http.server", "9001"]
+          ports:
+            - containerPort: 9001

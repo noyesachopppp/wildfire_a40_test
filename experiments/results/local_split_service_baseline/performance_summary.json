@@ -1,0 +1,63 @@
+{
+  "environment_name": "local_split_service_baseline",
+  "status": "SUCCESS",
+  "run_location": "local",
+  "actual_runtime": "split_service_simulation",
+  "container_validation": false,
+  "container_runtime": null,
+  "run_type": "split_service_mock_vlm",
+  "detector_model": "YOLOv8n",
+  "detector_backend": "mock",
+  "model_zoo_candidates": {
+    "detection": [
+      "YOLOv8n",
+      "YOLOv8m"
+    ],
+    "segmentation": [
+      "SAM2"
+    ],
+    "vlm_explanation": [
+      "Qwen2.5-VL-7B"
+    ],
+    "optional_llm_summary": [
+      "A.X-4.0-Light"
+    ]
+  },
+  "vlm_enabled": true,
+  "vlm_event_only": true,
+  "vlm_model": "Qwen2.5-VL-7B",
+  "vlm_max_new_tokens": 64,
+  "force_event_mode": false,
+  "processed_frames": 14,
+  "total_runtime_ms": 3537.9295,
+  "avg_latency_per_frame_ms": 240.597,
+  "average_fps": 3.9571,
+  "frame_load_avg_ms": 228.2561,
+  "preprocess_avg_ms": 5.6467,
+  "yolo_inference_avg_ms": 0.0219,
+  "risk_engine_avg_ms": 0.0175,
+  "event_router_avg_ms": 0.0005,
+  "queue_wait_avg_ms": 0.0,
+  "queue_wait_p95_ms": 0.0,
+  "sam2_inference_avg_ms": 0.612,
+  "vlm_explanation_avg_ms": 0.0099,
+  "vlm_inference_avg_ms": 0.0099,
+  "output_write_avg_ms": 0.0105,
+  "end_to_end_avg_ms": 240.597,
+  "end_to_end_p95_ms": 268.5647,
+  "event_count": 8,
+  "sam2_used_count": 8,
+  "vlm_used_count": 8,
+  "bottleneck_stage": "frame_load",
+  "worker_busy_time_ms": {
+    "sam2_worker_busy_ms": 8.5677,
+    "vlm_worker_busy_ms": 0.1389
+  },
+  "sam2_worker_utilization": 0.002422,
+  "vlm_worker_utilization": 3.9e-05,
+  "queue_depth_max": 1,
+  "timeout_count": 0,
+  "fallback_count": 0,
+  "note": "Mock split-service run validates queue wait, worker saturation, backpressure, and event-gated SAM2/VLM path.",
+  "notes": "Mock split-service run validates queue wait, worker saturation, backpressure, and event-gated SAM2/VLM path."
+}

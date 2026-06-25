@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wildfire-vlm-worker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wildfire-vlm-worker
+  template:
+    metadata:
+      labels:
+        app: wildfire-vlm-worker
+    spec:
+      containers:
+        - name: vlm-worker
+          image: wildfire-ai-alert:latest
+          command: ["python3", "-m", "http.server", "9005"]
+          ports:
+            - containerPort: 9005

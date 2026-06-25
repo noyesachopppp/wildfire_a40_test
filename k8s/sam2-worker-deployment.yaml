@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: wildfire-sam2-worker
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: wildfire-sam2-worker
+  template:
+    metadata:
+      labels:
+        app: wildfire-sam2-worker
+    spec:
+      containers:
+        - name: sam2-worker
+          image: wildfire-ai-alert:latest
+          command: ["python3", "-m", "http.server", "9004"]
+          ports:
+            - containerPort: 9004
